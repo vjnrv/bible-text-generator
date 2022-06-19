@@ -1,5 +1,6 @@
 from io import StringIO
 from html.parser import HTMLParser
+import re
 
 class TextCleaner(HTMLParser):
     # Inspired by: https://stackoverflow.com/a/925630/777755
@@ -21,6 +22,7 @@ class TextCleaner(HTMLParser):
     def clean_text(cls, text: str) -> str:
         chars_to_remove = ['ⓐ', 'ⓑ', 'ⓒ', 'ⓓ', 'ⓔ', 'ⓕ', 'ⓖ', 'ⓗ', 'ⓘ', 'ⓙ', 'ⓚ', 'ⓛ', 'ⓜ', 'ⓝ', 'ⓞ', 'ⓟ', 'ⓠ', 'ⓡ', 'ⓢ', 'ⓣ', 'ⓤ', 'ⓥ', 'ⓦ', 'ⓧ', 'ⓨ', 'ⓩ']
         text = text.translate({ ord(x): '' for x in chars_to_remove })
+        text = re.sub(r'\[\d+\]', '', text)
         # text = re.sub(r'<\w+\/?>(.<\/\w+>)?', '', verse["text"])
         parser = cls()
         parser.feed(text)
