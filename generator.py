@@ -49,7 +49,7 @@ class Generator:
             prefix = " " * round(len(number) * 1.8) # Reserva o espaço do versiculo
             texto = prefix + TextCleaner.clean_text(verse["text"])
             # Essa funcao corta o texto pelo tamanho de caracteres, é preciso criar outra lógica para cortar por pixels.
-            texto = textwrap.fill(texto, 42)
+            texto = textwrap.fill(texto, 40)
             line_width, line_height = self.font_verse.getsize(texto)
             text_lines = len(texto.split("\n"))
             text_height = round((line_height * text_lines)) + 40
