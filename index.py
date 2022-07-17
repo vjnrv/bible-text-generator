@@ -2,14 +2,16 @@
 from bible import Bible
 from generator import Generator
 
-bible = Bible('ARA') # ARA, NAA
+bible = Bible('NAA') # [ARA, NAA, NVI]
 gen = Generator(bible)
 gen.debug = True
-gen.template = 'green-sky' # bible-classic, green-sky
-gen.generate("1 Coríntios 9.25-27")
-gen.generate("João 12.20-28")
-gen.generate("Atos 13.25")
-gen.generate("2 Timóteo 4.6-8")
-gen.generate("Atos 20:24")
-gen.save('output/Pregacao05-29')
+gen.template = 'bible-classic' # bible-classic, green-sky
+gen.generate("Lucas 18:31-34")
+gen.generate("Lucas 13:31-35")
+gen.generate("Filipenses 2:5-11")
+gen.generate("Salmos 84:5")
+bible.set_version('NVI')
+gen.generate("Salmos 84:5")
+gen.save('output/Pregacao-07-17')
+
 print('Concluded')
