@@ -2,19 +2,28 @@ import os, re, sqlite3
 
 class Bible:
     def __init__(self, version: str):
-        self._version = version.lower()
-        self.db_path = 'data/' + self._version + '.sqlite3'
-
-        if not os.path.isfile(self.db_path):
-            raise FileNotFoundError("[Bible] Unsupported version: " + version)
-
-        self.con = sqlite3.connect(self.db_path)
-        self.con.row_factory = sqlite3.Row
-        self.cur = self.con.cursor()
+        self.set_version(version)
 
     @property
     def version(self) -> str:
         return self._version.upper()
+    
+    @property
+    def db_path(self) -> str:
+        return 'data/' + self._version + '.sqlite3'
+    
+    def _connect(self):
+        if not os.path.isfile(self.db_path):
+            raise FileNotFoundError("[Bible] Unsupported version: " + self.version)
+
+        self.con = sqlite3.connect(self.db_path)
+        self.con.row_factory = sqlite3.Row
+        self.cur = self.con.cursor()
+        
+    def set_version(self, version: str):
+        self._version = version.lower()
+        self._connect()
+        return self
 
     def get_books(self) -> list[sqlite3.Row]:
         return self.cur.execute('select * from book')
