@@ -2,6 +2,7 @@
 from bible import Bible
 from generator import Generator
 import PySimpleGUI as sg
+import sys
 
 versions = ['NAA', 'ARA', 'NVI']
 themes = ['Clássico', 'Céu estrelado']
@@ -17,7 +18,7 @@ window = sg.Window('Bible Text Generator', layout)
 event, values = window.read()
 
 if not values['texto']:
-    quit()
+    sys.exit()
 
 theme = 'green-sky' if values['theme'] == 'Céu estrelado' else 'bible-classic'
 output_dir = 'output/%s' % (values['texto'].replace(' ', ''))
@@ -29,6 +30,6 @@ gen.generate(values['texto'])
 gen.save(output_dir)
 gen.opendir(output_dir)
 window.close()
-quit()
+sys.exit()
 
 # BUILD: https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen/59558614#59558614
