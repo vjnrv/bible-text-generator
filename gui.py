@@ -33,3 +33,5 @@ window.close()
 sys.exit()
 
 # BUILD: https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen/59558614#59558614
+# - pyinstaller --hiddenimport win32timezone -F gui.py
+# - pyinstaller --onefile --windowed gui.py
