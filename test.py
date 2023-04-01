@@ -6,12 +6,9 @@ bible = Bible('NAA') # [ARA, NAA, NVI]
 gen = Generator(bible)
 gen.debug = True
 gen.template = 'bible-classic' # bible-classic, green-sky
-gen.generate("Lucas 18:31-34")
-gen.generate("Lucas 13:31-35")
-gen.generate("Filipenses 2:5-11")
-gen.generate("Salmos 84:5")
-bible.set_version('NVI')
-gen.generate("Salmos 84:5")
-gen.save('output/Pregacao-07-17')
+gen.generate("Lucas 19:45-48")
+gen.generate("Lucas 20:1-18")
+# bible.set_version('NVI')
+gen.save('output/Pregacao-08-27')
 
 print('Concluded')
