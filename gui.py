@@ -21,7 +21,7 @@ if not values['texto']:
     sys.exit()
 
 theme = 'green-sky' if values['theme'] == 'Céu estrelado' else 'bible-classic'
-output_dir = 'output/%s' % (values['texto'].replace(' ', ''))
+output_dir = 'output/%s' % (values['texto'].replace(' ', '').replace(':', '_'))
 bible = Bible(values['version']) # ARA, NAA
 gen = Generator(bible)
 gen.debug = True
