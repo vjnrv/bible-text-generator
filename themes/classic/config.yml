@@ -1,0 +1,21 @@
+# Classic Theme
+---
+name: Classic
+background: background.png
+style:
+  title:
+    size: 80
+    color: d2ba51
+    font: gothic.ttf
+  body:
+    size: 80
+    color: ffeeee
+    font: gothic-bold.ttf
+  number:
+    size: 60
+    color: d2ba51
+    font: gothic-italic.ttf
+params:
+  margin: 70
+  body_start_position: 150
+  chars_per_line: 40

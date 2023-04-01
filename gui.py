@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 from bible import Bible
+from theme import Theme
 from generator import Generator
 import PySimpleGUI as sg
 import sys
 
 versions = ['NAA', 'ARA', 'NVI']
-themes = ['Clássico', 'Céu estrelado']
+themes = ['classic', 'black-green', 'green-sky']
 layout = [
     [sg.Text("Versão da Bíblia")],
     [sg.Combo(versions, default_value='NAA', key='version')],
     [sg.Text("Tema")],
-    [sg.Combo(themes, default_value='Clássico', key='theme')],
+    [sg.Combo(themes, default_value='classic', key='theme')],
     [sg.Text("Qual o texto? Insira no formato: Lucas 17.11-19")],
     [sg.Input(key='texto')],
     [sg.Button('Gerar Slides')] ]
@@ -20,12 +21,11 @@ event, values = window.read()
 if not values['texto']:
     sys.exit()
 
-theme = 'green-sky' if values['theme'] == 'Céu estrelado' else 'bible-classic'
 output_dir = 'output/%s' % (values['texto'].replace(' ', '').replace(':', '_'))
 bible = Bible(values['version']) # ARA, NAA
-gen = Generator(bible)
+theme = Theme(values['theme'])
+gen = Generator(bible, theme)
 gen.debug = True
-gen.template = theme # bible-classic, green-sky
 gen.generate(values['texto'])
 gen.save(output_dir)
 gen.opendir(output_dir)
