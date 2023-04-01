@@ -1,7 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 from bible import Bible
 from textcleaner import TextCleaner
-import textwrap, os
+from threading import Timer
+import textwrap, webbrowser, os
 
 class Generator:
     def __init__(self, bible: Bible, template: str = 'bible-classic', font: str = 'gothic'):
@@ -113,5 +114,11 @@ class Generator:
 
             slide.save("%s/pregacao%s.png" % (output_dir, str(i + 1)))
             
+    def opendir(self, path: str):
+        def open():
+            webbrowser.open('file:///' + os.path.realpath(path))
+
+        Timer(1, open).start()
+
     def clear(self):
         self.slides = []
