@@ -1,0 +1,21 @@
+# Black Green Theme
+---
+name: Black Green
+background: background.png
+style:
+  title:
+    size: 80
+    color: 01fe9e
+    font: cmgsans-mediumcaps.ttf
+  body:
+    size: 80
+    color: ffeeee
+    font: cmgsans-medium.ttf
+  number:
+    size: 60
+    color: ffeeee
+    font: cmgsans-medium.ttf
+params:
+  margin: 70
+  body_start_position: 150
+  chars_per_line: 40
